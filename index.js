@@ -1,3 +1,3 @@
-const outputMessage = require("./output_message.js");
+import outputMessage from "./output_message.js";
 
-outputMessage('hello');
+outputMessage("hello");

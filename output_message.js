@@ -5,4 +5,4 @@ console.log(`The message is ${message}`)
 }
 
 
-module.exports = outputMessage;
+export default outputMessage;
