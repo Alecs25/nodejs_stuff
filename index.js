@@ -1,9 +1,16 @@
-// Imports the Node.js core http module (or with node:http).
-// Creates an HTTP server with the http.createServer method.
-// Set the response status code to 200
-// Sets the response header: Content-Type: text/html
-// Sends an HTML response body containing any message.
-// Make the server listen to the port 3000
+// Our HTTP server now sends a JSON response body.
+
+//     Change the location in the response to "Mars".
+//     Run the server and make a request to it with curl using the --verbose flag.
+//     What is the value of the Content-Length response header?
+
+// There should be a single script that:
+
+//     Imports the Node.js core http module (or with node:http).
+//     Creates an HTTP server with the http.createServer method.
+//     Sets the response header: Content-Type: application/json
+//     Sends the JSON response body: { location: "Mars" }
+//     The value of the Content-Length response header is 19.
 
 import { createServer } from "node:http";
 
@@ -11,9 +18,11 @@ const server = createServer((request, response) => {
 	console.log("richiesta ricevuta");
 
 	response.statusCode = 200;
-	response.setHeader("Content-Type", "text/html");
+	response.setHeader("Content-Type", "application/json");
 
-	response.end("<html><body><p>ciao mondo</p></body></html>");
+	const jsonResponse = { location: "Mars" };
+
+	response.end(JSON.stringify(jsonResponse));
 });
 
 server.listen(3000, () => {
